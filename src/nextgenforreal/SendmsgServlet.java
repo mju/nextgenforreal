@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.mortbay.log.Log;
-
 import java.util.logging.Logger;
 
 import com.google.appengine.api.xmpp.JID;
@@ -44,7 +42,7 @@ public class SendmsgServlet extends HttpServlet {
     msgSent = (status.getStatusMap().get(jid) == SendResponse.Status.SUCCESS);
 
     if (!msgSent) {
-        Log.info("Message: " + msg + " was not sent successfully.");
+      logger.info("Message: " + msg + " was not sent successfully.");
     }
 
     resp.sendRedirect("/sendmsg.jsp");
