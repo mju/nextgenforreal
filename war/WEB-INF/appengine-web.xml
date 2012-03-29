@@ -26,6 +26,7 @@
         <include path="/**.html" />
         <include path="/**.jsp" />
         <include path="/**.ico" />
+        <include path="/**.json" />
   </static-files>
 
   <!--
