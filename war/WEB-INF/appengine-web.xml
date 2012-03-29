@@ -24,6 +24,8 @@
         <include path="/**.png" />
         <include path="/**.gif" />
         <include path="/**.html" />
+        <include path="/**.jsp" />
+        <include path="/**.ico" />
   </static-files>
 
   <!--
