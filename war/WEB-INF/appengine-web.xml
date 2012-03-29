@@ -23,6 +23,7 @@
         <include path="/**.scss" />
         <include path="/**.png" />
         <include path="/**.gif" />
+        <include path="/**.html" />
   </static-files>
 
   <!--
