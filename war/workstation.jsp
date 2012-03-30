@@ -113,11 +113,11 @@
                                 id: 'Security Lookup',
                                 title: 'Security Lookup',
                                 tools: this.getTools(),
-                                minWidth: 400,
-                                maxWidth: 400,
-                                width: 400,
-                                height: 400,
-                                html: '<iframe src="http://localhost:8888/SecLookup/lookup.html" style="width:400px; height:400px;"></iframe>',
+                                minWidth: 320,
+                                maxWidth: 320,
+                                width: 320,
+                                //height: 400,
+                                html: '<iframe src="SecLookup/lookup.html" style="height: 320px; width: 330px;"></iframe>',
                                 listeners: {
                                     'close': Ext.bind(this.onPortletClose, this)
                                 }
@@ -261,9 +261,9 @@
     var login_header = login.innerHTML;
     login.innerHTML = "";
 
-    var seclookup = document.getElementById("seclookup_wrapper");
-    var SecurityLookUpApp = seclookup.innerHTML;
-    seclookup.innerHTML;
+    //var seclookup = document.getElementById("seclookup_wrapper");
+    //var SecurityLookUpApp = seclookup.innerHTML;
+    //seclookup.innerHTML = "";
   </script>
   <%
     if (user != null) {
@@ -294,8 +294,8 @@
       var notebook = document.getElementById("notebook");
         notebook.innerHTML =
         '<p><span class="bold">me: </span>' + msg + '</p>' + notebook.innerHTML;
-      //var path = "http://nextgenforreal.appspot.com/channelmsg?e=" + email + "&m=" + msg;
-      var path = "http://localhost:8888/channelmsg?e=" + email + "&m=" + msg;
+      var path = "http://nextgenforreal.appspot.com/channelmsg?e=" + email + "&m=" + msg;
+      //var path = "http://localhost:8888/channelmsg?e=" + email + "&m=" + msg;
       var xhr = new XMLHttpRequest();
       xhr.open("POST", path, true);
       xhr.send();

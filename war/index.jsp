@@ -94,8 +94,8 @@
       var notebook = document.getElementById("notebook");
         notebook.innerHTML =
         '<p><span class="bold">me: </span>' + msg + '</p>' + notebook.innerHTML;
-      //var path = "http://nextgenforreal.appspot.com/channelmsg?e=" + email + "&m=" + msg;
-      var path = "http://localhost:8888/channelmsg?e=" + email + "&m=" + msg;
+      var path = "http://nextgenforreal.appspot.com/channelmsg?e=" + email + "&m=" + msg;
+      //var path = "http://localhost:8888/channelmsg?e=" + email + "&m=" + msg;
       var xhr = new XMLHttpRequest();
       xhr.open("POST", path, true);
       xhr.send();
