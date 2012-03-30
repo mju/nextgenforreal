@@ -113,10 +113,11 @@
                                 id: 'Security Lookup',
                                 title: 'Security Lookup',
                                 tools: this.getTools(),
-                                minWidth: 305,
-                                maxWidth: 305,
-                                width: 305,
-                                html: SecurityLookUpApp,
+                                minWidth: 400,
+                                maxWidth: 400,
+                                width: 400,
+                                height: 400,
+                                html: '<iframe src="http://localhost:8888/SecLookup/lookup.html" style="width:400px; height:400px;"></iframe>',
                                 listeners: {
                                     'close': Ext.bind(this.onPortletClose, this)
                                 }
@@ -238,6 +239,9 @@
     }
   %>
   </div>
+  
+  
+  <!-- 
   <div id="seclookup_wrapper">
   <div>
   <div class="ui-widget"><label for="seclookup">Security: </label><input id="seclookup"></input></div>
@@ -246,6 +250,8 @@
   </div>
   </div>
   </div>
+  
+   --> 
   <script type="text/javascript">
     var chatter = document.getElementById("chat_wrapper");
     var ChatClientApp = chatter.innerHTML;
