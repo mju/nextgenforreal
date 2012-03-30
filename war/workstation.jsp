@@ -74,12 +74,14 @@
                     region: 'north',
                     height: 40,
                     html: login_header
-                },
-                {
+                  },
+                  {
                     xtype: 'container',
                     region: 'center',
                     layout: 'border',
-                    items: [{
+                    items: [
+/*
+                      {
                         id: 'app-options',
                         title: 'Options',
                         region: 'west',
@@ -93,8 +95,9 @@
                             animate: true
                         },
                         html: SettingsContent
-                    },
-                    {
+                      },
+*/
+                      {
                         id: 'app-portal',
                         xtype: 'portalpanel',
                         region: 'center',
@@ -125,11 +128,15 @@
                                     'close': Ext.bind(this.onPortletClose, this)
                                 }
                             }]
-                        },
+                        }
+/*
+                        ,
                         {
                           id: 'col-3',
                           items: []
-                        }]
+                        }
+*/
+                        ]
                     }]
                 }]
             });
@@ -157,7 +164,7 @@
         }
   });
 
-  var SettingsContent = '<div class="portlet-content"><ul><li>Settings One</li><li>Settings Two</li></div>';
+  //var SettingsContent = '<div class="portlet-content"><ul><li>Settings One</li><li>Settings Two</li></div>';
 
   var SecurityLookUpApp = '<div class="portlet-content">Security Lookup</div>';
 
