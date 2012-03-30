@@ -11,6 +11,10 @@ a {
   display: none;
 }
 
+#login_wrapper {
+  display: none;
+}
+
 #login {
   margin: 10px;
   color: #444;

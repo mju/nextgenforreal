@@ -73,7 +73,7 @@
                     xtype: 'box',
                     region: 'north',
                     height: 40,
-                    html: 'Workstation'
+                    html: login_header
                 },
                 {
                     xtype: 'container',
@@ -104,6 +104,7 @@
                                 id: 'Security Lookup',
                                 title: 'Security Lookup',
                                 tools: this.getTools(),
+                                width: 230,
                                 html: SecurityLookUpApp,
                                 listeners: {
                                     'close': Ext.bind(this.onPortletClose, this)
@@ -116,6 +117,9 @@
                                 id: 'Chat Client',
                                 title: 'Chat Client',
                                 tools: this.getTools(),
+                                minWidth:234,
+                                maxWidth: 234,
+                                width: 234,
                                 html: ChatClientApp,
                                 listeners: {
                                     'close': Ext.bind(this.onPortletClose, this)
@@ -180,7 +184,7 @@
   </script>
 </head>
 <body>
-  <div id="chat_wrapper">
+  <div id="login_wrapper">
   <div id="login">
   <%
     if (user != null) {
@@ -199,6 +203,8 @@
     }
   %>
   </div>
+  </div>
+  <div id="chat_wrapper">
   <%
     if (user != null) {
   %>
@@ -216,14 +222,22 @@
     </div>
     <div id="notebook"></div>
   </div>
+  <%
+    }
+  %>
   </div>
   <script type="text/javascript">
     var chatter = document.getElementById("chat_wrapper");
-    window.alert(chatter.innerHTML);
     var ChatClientApp = chatter.innerHTML;
-    //var ChatClientApp = '<div class="portlet-content">Security Lookup</div>';
     chatter.innerHTML = "";
+    
+    var login = document.getElementById("login_wrapper");
+    var login_header = login.innerHTML;
+    login.innerHTML = "";
   </script>
+  <%
+    if (user != null) {
+  %>
   <script type="text/javascript" src="/_ah/channel/jsapi"></script>
   <script type="text/javascript">
     var channel = new goog.appengine.Channel("<%= token %>");
