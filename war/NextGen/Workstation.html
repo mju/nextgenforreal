@@ -72,16 +72,8 @@
 		                    items: [{
 		                        id: 'col-1',
 		                        items: [{
-		                            id: 'portlet-1',
-		                            title: 'Grid Portlet',
-		                            tools: this.getTools(),
-		                            items: Ext.create('Ext.app.GridPortlet'),
-		                            listeners: {
-		                                'close': Ext.bind(this.onPortletClose, this)
-		                            }
-		                        },{
-		                            id: 'portlet-2',
-		                            title: 'Portlet 2',
+		                            id: 'Security Lookup',
+		                            title: 'Security Lookup',
 		                            tools: this.getTools(),
 		                            html: SecurityLookUpApp,
 		                            listeners: {
@@ -92,14 +84,18 @@
 		                    {
 		                        id: 'col-2',
 		                        items: [{
-		                            id: 'portlet-3',
-		                            title: 'Portlet 3',
+		                            id: 'Chat Client',
+		                            title: 'Chat Client',
 		                            tools: this.getTools(),
 		                            html: ChatClientApp,
 		                            listeners: {
 		                                'close': Ext.bind(this.onPortletClose, this)
 		                            }
 		                        }]
+		                    },
+		                    {
+		                    	id: 'col-3',
+		                    	items: []
 		                    }]
 		                }]
 		            }]
