@@ -7,6 +7,10 @@ a {
   color: #444;
 }
 
+#chat_wrapper {
+  display: none;
+}
+
 #login {
   margin: 10px;
   color: #444;
