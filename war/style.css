@@ -15,6 +15,10 @@ a {
   display: none;
 }
 
+#seclookup_wrapper {
+  display: none;
+}
+
 #login {
   margin: 10px;
   color: #444;

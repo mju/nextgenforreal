@@ -19,7 +19,7 @@
     logger.info("Nickname: " + user.getNickname());
     logger.info("Email: " + user.getEmail());
     logger.info("UserId: " + user.getUserId());
-    
+
     // set up the channel for this client.
     ChannelService channelService =
       ChannelServiceFactory.getChannelService();
@@ -33,6 +33,8 @@
   <title>Workstation</title>
   <link href="style.css" rel="stylesheet" type="text/css">
 
+  <link type="text/css" href="SecLookup/css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet" />
+
   <link rel="stylesheet" type="text/css" href="NextGen/ext-4.0/resources/css/ext-all.css">
   <link rel="stylesheet" type="text/css" href="NextGen/ext-4.0/factset/portal.css">
 
@@ -40,6 +42,10 @@
   <script type="text/javascript" src="NextGen/ext-4.0/factset/cookieEditing.js"></script>
   <script type="text/javascript" src="NextGen/ext-4.0/factset/fakecontent.js"></script>
   <script type="text/javascript" src="NextGen/ext-4.0/factset/nonesense.js"></script>
+
+  <script type="text/javascript" src="SecLookup/js/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="SecLookup/js/jquery-ui-1.8.18.custom.min.js"></script>
+  <script type="text/javascript" src="SecLookup/js/seclookup.js"></script>
 
   <script>
   Ext.define('Ext.app.Portal', {
@@ -107,7 +113,9 @@
                                 id: 'Security Lookup',
                                 title: 'Security Lookup',
                                 tools: this.getTools(),
-                                width: 230,
+                                minWidth: 305,
+                                maxWidth: 305,
+                                width: 305,
                                 html: SecurityLookUpApp,
                                 listeners: {
                                     'close': Ext.bind(this.onPortletClose, this)
@@ -164,9 +172,6 @@
         }
   });
 
-  //var SettingsContent = '<div class="portlet-content"><ul><li>Settings One</li><li>Settings Two</li></div>';
-
-  var SecurityLookUpApp = '<div class="portlet-content">Security Lookup</div>';
 
   ///CREATE VIEW
   Ext.Loader.setPath('Ext.app', 'classes');
@@ -233,6 +238,14 @@
     }
   %>
   </div>
+  <div id="seclookup_wrapper">
+  <div>
+  <div class="ui-widget"><label for="seclookup">Security: </label><input id="seclookup"></input></div>
+  <div class="search-opts"></div>
+  <div class="ui-widget" style="margin-top:2em; font-family:Arial">Result: <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
+  </div>
+  </div>
+  </div>
   <script type="text/javascript">
     var chatter = document.getElementById("chat_wrapper");
     var ChatClientApp = chatter.innerHTML;
@@ -241,6 +254,10 @@
     var login = document.getElementById("login_wrapper");
     var login_header = login.innerHTML;
     login.innerHTML = "";
+
+    var seclookup = document.getElementById("seclookup_wrapper");
+    var SecurityLookUpApp = seclookup.innerHTML;
+    seclookup.innerHTML;
   </script>
   <%
     if (user != null) {
