@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Workstation</title>
+	
+	<link rel="stylesheet" type="text/css" href="ext-4.0/resources/css/ext-all.css">
+	<link rel="stylesheet" type="text/css" href="ext-4.0/factset/portal.css">
+	
+	<script type="text/javascript" src="ext-4.0/ext.js"></script>
+	    <script type="text/javascript" src="ext-4.0/factset/cookieEditing.js"></script>
+    <script type="text/javascript" src="ext-4.0/factset/fakecontent.js"></script>
+    <script type="text/javascript" src="ext-4.0/factset/nonesense.js"></script>
+    
+	<script>
+		Ext.define('Ext.app.Portal', {
+		    extend: 'Ext.container.Viewport',
+	
+		    uses: ['Ext.app.PortalPanel', 'Ext.app.PortalColumn', 'Ext.app.GridPortlet', 'Ext.app.ChartPortlet'],
+	
+		    getTools: function(){
+		        return [{
+		            xtype: 'tool',
+		            type: 'gear',
+		            handler: function(e, target, panelHeader, tool){
+		                var portlet = panelHeader.ownerCt;
+		                portlet.setLoading('Working...');
+		                Ext.defer(function() {
+		                    portlet.setLoading(false);
+		                }, 2000);
+		            }
+		        }];
+		    },
+	
+		    initComponent: function(){
+		        Ext.apply(this, {
+		            id: 'app-viewport',
+		            layout: {
+		                type: 'border',
+		                padding: '0 5 5 5' 
+		            },
+		            items: [{
+		                id: 'app-header',
+		                xtype: 'box',
+		                region: 'north',
+		                height: 40,
+		                html: 'Factset Workstation'
+		            },
+		            {
+		                xtype: 'container',
+		                region: 'center',
+		                layout: 'border',
+		                items: [{
+		                    id: 'app-options',
+		                    title: 'Options',
+		                    region: 'west',
+		                    animCollapse: true,
+		                    width: 200,
+		                    minWidth: 150,
+		                    maxWidth: 400,
+		                    split: true,
+		                    collapsible: true,
+		                    layoutConfig:{
+		                        animate: true
+		                    },
+		                    html: SettingsContent
+		                },
+		                {
+		                    id: 'app-portal',
+		                    xtype: 'portalpanel',
+		                    region: 'center',
+		                    items: [{
+		                        id: 'col-1',
+		                        items: [{
+		                            id: 'Security Lookup',
+		                            title: 'Security Lookup',
+		                            tools: this.getTools(),
+		                            html: SecurityLookUpApp,
+		                            listeners: {
+		                                'close': Ext.bind(this.onPortletClose, this)
+		                            }
+		                        }]
+		                    },
+		                    {
+		                        id: 'col-2',
+		                        items: [{
+		                            id: 'Chat Client',
+		                            title: 'Chat Client',
+		                            tools: this.getTools(),
+		                            html: ChatClientApp,
+		                            listeners: {
+		                                'close': Ext.bind(this.onPortletClose, this)
+		                            }
+		                        }]
+		                    },
+		                    {
+		                    	id: 'col-3',
+		                    	items: []
+		                    }]
+		                }]
+		            }]
+		        });
+		        this.callParent(arguments);
+		    },
+	
+		    onPortletClose: function(portlet) {
+		        this.showMsg('"' + portlet.title + '" was removed');
+		    },
+	
+		    showMsg: function(msg) {
+		        var el = Ext.get('app-msg'),
+		            msgId = Ext.id();
+	
+		        this.msgId = msgId;
+		        el.update(msg).show();
+	
+		        Ext.defer(this.clearMsg, 3000, this, [msgId]);
+		    },
+	
+		    clearMsg: function(msgId) {
+		        if (msgId === this.msgId) {
+		            Ext.get('app-msg').hide();
+		        }
+		    }
+		});
+	
+		var SettingsContent = '<div class="portlet-content"><ul><li>Settings One</li><li>Settings Two</li></div>';
+		
+		var SecurityLookUpApp = '<div class="portlet-content">Security Lookup</div>';
+		
+		var ChatClientApp = '<div class="portlet-content">Chat Client</div>';
+		
+		
+		
+		
+		///CREATE VIEW
+	    Ext.Loader.setPath('Ext.app', 'classes');
+	    Ext.require([
+	        'Ext.layout.container.*',
+	        'Ext.resizer.Splitter',
+	        'Ext.fx.target.Element',
+	        'Ext.fx.target.Component',
+	        'Ext.window.Window',
+	        'Ext.app.Portlet',
+	        'Ext.app.PortalColumn',
+	        'Ext.app.PortalPanel',
+	        'Ext.app.Portlet',
+	        'Ext.app.PortalDropZone',
+	        'Ext.app.GridPortlet',
+	        'Ext.app.ChartPortlet'
+	    ]);
+	
+	    Ext.onReady(function(){
+	        Ext.create('Ext.app.Portal');
+	    });
+	</script>
+</head>
+<body>
+
+</body>
+</html>
