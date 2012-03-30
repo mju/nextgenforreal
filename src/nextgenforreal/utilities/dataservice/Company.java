@@ -100,6 +100,10 @@ public class Company {
 		return this.tickerSymbol;
 	}
 	
+	public double getMarketCap() {
+		return this.marketCap;
+	}
+	
 	//HAVE TO CALL THIS FOR THE NEXT VALUE
 	public double getNextPriceForCompany(int companyNumber) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
