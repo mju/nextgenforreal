@@ -48,6 +48,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     <servlet-name>channelmsg</servlet-name>
     <url-pattern>/channelmsg</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <servlet-name>seclookup</servlet-name>
+    <servlet-class>nextgenforreal.SecurityLookupServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>seclookup</servlet-name>
+    <url-pattern>/seclookup</url-pattern>
+  </servlet-mapping>
 
   <welcome-file-list>
     <welcome-file>sendmsg.jsp</welcome-file>
