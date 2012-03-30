@@ -50,7 +50,8 @@ public class SecurityLookupServlet extends HttpServlet {
 		StringBuffer sb = new StringBuffer(String.format("%s({\"securities\":[", cb));
 		int count = 0;
 		for(Company result : results) {
-			sb.append(String.format("{label: \"%s\", value: \"%s\"}", result.getCompanyTicker(), result.getCompanyName()));
+			sb.append(String.format("{label: \"%s\", value: \"%s\", price: %f, marketCap: %f}", 
+					result.getCompanyTicker(), result.getCompanyName(), result.getPrice(), result.getMarketCap()));
 			if(count < results.size() - 1) {
 				sb.append(",");
 				++count;
