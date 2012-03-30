@@ -96,6 +96,10 @@ public class Company {
 		return this.fullCompanyName;
 	}
 	
+	public String getCompanyTicker() {
+		return this.tickerSymbol;
+	}
+	
 	//HAVE TO CALL THIS FOR THE NEXT VALUE
 	public double getNextPriceForCompany(int companyNumber) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
