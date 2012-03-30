@@ -1,0 +1,60 @@
+body {
+  font-family: "helvetica", "sans-serif";
+}
+
+a {
+  text-decoration: none;
+  color: #444;
+}
+
+#login {
+  margin: 10px;
+  color: #444;
+  overflow: hidden;
+}
+#send_but {
+  border: 1px dotted #000;
+  width: 40px;
+}
+
+#send_but a {
+  text-decoration: none;
+  color: #111;
+}
+#chatter {
+  width: 230px;
+  border: 1px #000 dotted;
+}
+
+#notebook {
+  height: 250px;
+  overflow: auto;
+  font-size: 12px;
+  border-top: 1px #000 dotted;
+}
+
+#notebook p {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.inputdiv {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.textbox {
+  border: 1px solid #999;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}

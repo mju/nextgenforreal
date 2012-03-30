@@ -30,22 +30,23 @@
 <html>
   <head>
     <title>Next Gen For Real</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-  <div>
+  <div id="login">
   <%
     if (user != null) {
   %>
-      <span style="margin: 10px;"><%= user.getEmail() %></span>
-      <span style="margin: 10px;">
+      <div class="left"><%= user.getEmail() %></div>
+      <div class="right">
         <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Sign out</a>
-      </span>
+      </div>
   <%
     } else {
   %>
-      <span style="margin: 10px;">
+      <div>
         <a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
-      </span>
+      </div>
   <%
     }
   %>
@@ -53,14 +54,16 @@
   <%
     if (user != null) {
   %>
-  <div>
-    <div>
-      Send to: <input id="sendto" name="sendto" type="text">
+  <div id="chatter">
+    <div class="inputdiv">
+      <label>Send to: </label><br>
+      <input id="sendto" name="sendto" type="text" class="textbox" value="@gmail.com">
     </div>
-    <div>
-      Message: <input id="msg" name="msg" type="text">
+    <div class="inputdiv">
+      <label>Message: </label><br>
+      <input id="msg" name="msg" type="text" class="textbox">
     </div>
-    <div>
+    <div id="send_but">
       <a href="javascript: sendMsg(document.getElementById('sendto').value, document.getElementById('msg').value);">Send</a>
     </div>
     <div id="notebook"></div>
@@ -71,30 +74,28 @@
     var socket = channel.open();
     socket.onmessage = function(msg) {
       var notebook = document.getElementById("notebook");
-      notebook.innerHTML +=
-    	  '<p><span style="font-weight: bold;">' +
-    	  document.getElementById("sendto").value +
+      notebook.innerHTML =
+    	  '<p><span class="bold">' +
+    	  document.getElementById("sendto").value.split("@")[0] +
     	  ': </span>' +
     	  msg.data +
-    	  '</p>';
+    	  '</p>' +
+    	  notebook.innerHTML;
     }
     socket.onopen = function() {
     }
     socket.onerror = function(error) {
+      window.alert("onerror: " + error.code + " " + error.description);
     }
     socket.onclose = function() {
     }
 
     function sendMsg(email, msg) {
       var notebook = document.getElementById("notebook");
-        notebook.innerHTML +=
-        '<p><span style="font-weight: bold;">' +
-        '<%= user.getEmail() %>: ' +
-        '</span>' +
-        msg +
-        '</p>';
-      var path = "http://nextgenforreal.appspot.com/channelmsg?e=" + email + "&m=" + msg;
-      //var path = "http://localhost:8888/channelmsg?e=" + email + "&m=" + msg;
+        notebook.innerHTML =
+        '<p><span class="bold">me: </span>' + msg + '</p>' + notebook.innerHTML;
+      //var path = "http://nextgenforreal.appspot.com/channelmsg?e=" + email + "&m=" + msg;
+      var path = "http://localhost:8888/channelmsg?e=" + email + "&m=" + msg;
       var xhr = new XMLHttpRequest();
       xhr.open("POST", path, true);
       xhr.send();
