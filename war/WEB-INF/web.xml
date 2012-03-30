@@ -4,6 +4,7 @@ xmlns="http://java.sun.com/xml/ns/javaee"
 xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+
   <servlet>
     <servlet-name>NextGenForReal</servlet-name>
     <servlet-class>nextgenforreal.NextGenForRealServlet</servlet-class>
@@ -12,6 +13,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     <servlet-name>NextGenForReal</servlet-name>
     <url-pattern>/nextgenforreal</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>sendmsg</servlet-name>
     <servlet-class>nextgenforreal.SendmsgServlet</servlet-class>
@@ -20,6 +22,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     <servlet-name>sendmsg</servlet-name>
     <url-pattern>/sendmsg</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>initData</servlet-name>
+  	<servlet-class>nextgenforreal.MockDataSetupServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>initData</servlet-name>
+  	<url-pattern>/initData</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>sendmsg.jsp</welcome-file>
     <welcome-file>NextGen/index.html</welcome-file>
